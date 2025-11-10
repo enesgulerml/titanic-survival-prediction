@@ -111,6 +111,8 @@ python -m src.predict
 
 The resulting `reports/submission.csv` file is formatted and ready to be submitted to the Kaggle competition.
 
+---
+
 ## 🔬 v2.0: Experiment Tracking (MLFlow)
 
 This project is integrated with **MLFlow** to log, track, and compare different training runs.
@@ -176,3 +178,43 @@ docker run --rm \
   -v ${pwd}/reports:/app/reports \
   titanic-service:v2 python -m src.predict
 ```
+
+---
+
+## 🚀 v3.0: API Serving (FastAPI & Docker)
+
+This project includes a **v3.0** upgrade that wraps the trained model (v2.1) into a production-ready API server using **FastAPI**.
+
+This API (the "Motor") is decoupled from any frontend. It is designed to be consumed by other machines or services (like a Streamlit dashboard, a mobile app, or another backend).
+
+The API provides:
+* **Automatic Data Validation** via Pydantic (`app/schema.py`).
+* **Automatic API Documentation** via Swagger UI (`/docs`).
+
+### 1. Build the v3.0 API Image
+
+This `Dockerfile` is optimized for production. It copies the `src` and `app` packages, and the `CMD` starts the `uvicorn` server automatically on port 80.
+
+```bash
+docker build -t titanic-api:v3 .
+```
+
+### 2. Run the API Server (Docker)
+
+This command runs the API server in "detached" mode (`-d`), maps your local port `8000` to the container's port `80` (`-p 8000:80`), and crucially, mounts the `models/` directory (`-v`) so the API can load the `titanic_model.joblib` file.
+
+```bash
+docker run -d --rm \
+  -p 8000:80 \
+  -v ${pwd}/models:/app/models \
+  titanic-api:v3
+```
+
+### 3. Test the API
+
+Once the container is running, go to your browser:
+
+* **API Docs (Swagger):** `http://localhost:8000/docs`
+* **Health Check:** `http://localhost:8000/`
+
+You can now use the `/docs` interface to send test data (e.g., a single passenger JSON) and get a live prediction (`{"Survived": 1}`).

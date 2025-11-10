@@ -8,5 +8,6 @@ dependencies:
   - jupyterlab
   - seaborn
   - mlflow
+  - fastapi
   - joblib
   - pip
