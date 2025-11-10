@@ -218,3 +218,38 @@ Once the container is running, go to your browser:
 * **Health Check:** `http://localhost:8000/`
 
 You can now use the `/docs` interface to send test data (e.g., a single passenger JSON) and get a live prediction (`{"Survived": 1}`).
+
+---
+
+## 🎨 v4.0: Interactive Dashboard (Streamlit)
+
+This repository also includes a v4.0 interactive dashboard powered by **Streamlit**.
+
+This dashboard (`dashboard/app.py`) is a "dumb" client. It demonstrates a key MLOps principle: **decoupling the frontend (UI) from the backend (API).**
+
+This Streamlit app:
+* **Does NOT** load the `.joblib` model.
+* **Does NOT** import the `src` package.
+* **DOES** simply make an HTTP request to the v3.1 FastAPI container (`http://localhost:8000/predict`).
+
+### How to Run the Dashboard
+
+This requires **two separate terminals** running simultaneously:
+
+**➡️ Terminal 1: Run the API Server (v3.1)**
+(If not already running) Start the FastAPI Docker container. This is the "Motor".
+```bash
+docker run -d --rm \
+  -p 8000:80 \
+  -v ${pwd}/models:/app/models \
+  titanic-api:v3
+```
+
+**➡️ Terminal 2: Run the Streamlit App (v4.0)**
+Activate the conda environment and run the Streamlit app. This is the "Dashboard".
+```bash
+conda activate titanic-survival-prediction
+python -m streamlit run dashboard/app.py
+```
+
+Your browser should automatically open to `http://localhost:8501`. You can now interact with the UI, which will send live requests to the API running in Docker.

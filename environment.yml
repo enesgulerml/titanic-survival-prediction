@@ -9,5 +9,7 @@ dependencies:
   - seaborn
   - mlflow
   - fastapi
+  - streamlit
+  - requests
   - joblib
   - pip
