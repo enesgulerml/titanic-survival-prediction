@@ -1,10 +1,18 @@
 # src/config.py
 
-# === 1. File Paths ===
-TRAIN_DATA_PATH = "data/raw/train.csv"
-TEST_DATA_PATH = "data/raw/test.csv"
+from pathlib import Path
 
-MODEL_OUTPUT_PATH = "models/titanic_model.joblib"
+# === 1. File Paths ===
+SRC_ROOT = Path(__file__).parent
+
+PROJECT_ROOT = SRC_ROOT.parent
+
+TRAIN_DATA_PATH = PROJECT_ROOT / "data" / "raw" / "train.csv"
+TEST_DATA_PATH = PROJECT_ROOT / "data" / "raw" / "test.csv"
+
+MODEL_OUTPUT_PATH = PROJECT_ROOT / "models" / "titanic_model.joblib"
+
+SUBMISSION_PATH = PROJECT_ROOT / "reports" / "submission.csv"
 
 
 # === 2. Target Variable ===
@@ -30,3 +38,8 @@ TEST_SIZE = 0.2
 
 # To ensure that the results are the same in each run (reproducibility)
 RANDOM_STATE = 42
+
+# === 5. MLFlow Experiment Tracking Settings ===
+
+# Tells MLFlow what name to save our experiment with
+MLFLOW_EXPERIMENT_NAME = "Titanic Survival Prediction"

@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/jenes/PycharmProjects/titanic-survival-prediction/mlruns/985058555246429461/models/m-3521f865efe342fcb720cc471822ea63/artifacts
+creation_timestamp: 1762779810332
+experiment_id: '985058555246429461'
+last_updated_timestamp: 1762779812686
+model_id: m-3521f865efe342fcb720cc471822ea63
+model_type: null
+name: model
+source_run_id: 250d7d872d224919932535a928835ced
+status: 2
+status_message: null

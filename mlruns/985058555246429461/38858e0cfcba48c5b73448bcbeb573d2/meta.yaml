@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/jenes/PycharmProjects/titanic-survival-prediction/mlruns/985058555246429461/38858e0cfcba48c5b73448bcbeb573d2/artifacts
+end_time: 1762778607563
+entry_point_name: ''
+experiment_id: '985058555246429461'
+lifecycle_stage: active
+run_id: 38858e0cfcba48c5b73448bcbeb573d2
+run_name: run_2025-11-10_15-43-22
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762778602704
+status: 3
+tags: []
+user_id: jenes

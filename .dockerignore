@@ -1,0 +1,29 @@
+# Git
+.git/
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+
+# Reserves
+titanic-survival-prediction-BOZUK/
+
+# Python Build & Cache
+*.egg-info/
+__pycache__/
+build/
+dist/
+.env
+
+# IDE
+.idea/
+.vscode/
+
+# Data, Models and Logs (MOST IMPORTANT)
+data/
+models/
+mlruns/
+
+# OS
+*.DS_Store
