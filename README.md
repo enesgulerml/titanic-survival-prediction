@@ -110,3 +110,69 @@ python -m src.predict
 ```
 
 The resulting `reports/submission.csv` file is formatted and ready to be submitted to the Kaggle competition.
+
+## 🔬 v2.0: Experiment Tracking (MLFlow)
+
+This project is integrated with **MLFlow** to log, track, and compare different training runs.
+
+### 1. View the Experiment Dashboard
+
+After running the training script (`python -m src.train`), MLFlow logs are saved locally to the `mlruns/` directory (which is ignored by Git).
+
+To launch the MLFlow web dashboard, run the following command from your project root directory:
+
+```bash
+mlflow ui
+```
+
+This will launch a server (usually at `http://127.0.0.1:5000`) where you can see all parameters, metrics (`accuracy`), and saved model artifacts for every run.
+
+### 2. Run Training (MLFlow-enabled)
+
+The `src.train` script is now wrapped with MLFlow. Every time you run it, a new "Run" will be logged in the MLFlow UI.
+
+```bash
+python -m src.train
+```
+
+---
+
+## 📦 v2.1: Portability (Docker)
+
+This project includes a `Dockerfile` and `.dockerignore` to build a portable, self-contained container image of the v2.0 application.
+
+The core principle is **"Code in Image, Data on Volume."**
+* The **Image** (`titanic-service:v2`) contains only the `conda` environment and the `src` code.
+* The **Volumes** (`data/`, `models/`, `mlruns/`) are mounted from your host machine at runtime.
+
+### 1. Build the Docker Image
+
+From the project root directory, run:
+
+```bash
+docker build -t titanic-service:v2 .
+```
+
+### 2. Run Training Inside Docker (with Volume Mounts)
+
+This command runs the training script *inside* the container, but mounts your local `data`, `models`, and `mlruns` folders. This ensures that the data is read correctly and the resulting model/logs are saved *back to your host machine*.
+
+```bash
+docker run --rm \
+  -v ${pwd}/data:/app/data \
+  -v ${pwd}/models:/app/models \
+  -v ${pwd}/mlruns:/app/mlruns \
+  titanic-service:v2 python -m src.train
+```
+
+### 3. Run Predictions Inside Docker
+
+Similarly, you can run the batch prediction script inside the container:
+
+```bash
+docker run --rm \
+  -v ${pwd}/data:/app/data \
+  -v ${pwd}/models:/app/models \
+  -v ${pwd}/reports:/app/reports \
+  titanic-service:v2 python -m src.predict
+```
