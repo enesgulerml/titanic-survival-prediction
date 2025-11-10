@@ -13,3 +13,9 @@
 # IDE
 .idea/
 .vscode/
+
+# Python Build Artifacts
+*.egg-info/
+__pycache__/
+build/
+dist/
