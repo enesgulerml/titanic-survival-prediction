@@ -84,8 +84,13 @@ def run_training():
         mlflow.log_metric("accuracy", accuracy)
 
         # 7. Save Trained Pipeline (Locally)
-        dump(pipeline, MODEL_OUTPUT_PATH)
         print(f"The trained model (pipeline) is saved to: {MODEL_OUTPUT_PATH}")
+
+        # Make sure the 'models/' folder exists before saving
+        MODEL_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+
+        dump(pipeline, MODEL_OUTPUT_PATH)
+        print("The model has been successfully saved.")
 
         # --- MLFlow Registration Step 3: Model (Artifact) ---
         print("Saving model (artifact) to MLFlow...")
