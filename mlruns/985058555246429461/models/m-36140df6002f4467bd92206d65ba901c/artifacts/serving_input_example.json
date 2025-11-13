@@ -1,0 +1,84 @@
+{
+  "dataframe_split": {
+    "columns": [
+      "PassengerId",
+      "Pclass",
+      "Name",
+      "Sex",
+      "Age",
+      "SibSp",
+      "Parch",
+      "Ticket",
+      "Fare",
+      "Cabin",
+      "Embarked"
+    ],
+    "data": [
+      [
+        332,
+        1,
+        "Partner, Mr. Austen",
+        "male",
+        45.5,
+        0,
+        0,
+        "113043",
+        28.5,
+        "C124",
+        "S"
+      ],
+      [
+        734,
+        2,
+        "Berriman, Mr. William John",
+        "male",
+        23.0,
+        0,
+        0,
+        "28425",
+        13.0,
+        null,
+        "S"
+      ],
+      [
+        383,
+        3,
+        "Tikkanen, Mr. Juho",
+        "male",
+        32.0,
+        0,
+        0,
+        "STON/O 2. 3101293",
+        7.925,
+        null,
+        "S"
+      ],
+      [
+        705,
+        3,
+        "Hansen, Mr. Henrik Juul",
+        "male",
+        26.0,
+        1,
+        0,
+        "350025",
+        7.8542,
+        null,
+        "S"
+      ],
+      [
+        814,
+        3,
+        "Andersson, Miss. Ebba Iris Alfrida",
+        "female",
+        6.0,
+        4,
+        2,
+        "347082",
+        31.275,
+        null,
+        "S"
+      ]
+    ]
+  }
+}
