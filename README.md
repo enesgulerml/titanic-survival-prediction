@@ -80,17 +80,39 @@ Follow these steps to set up the project environment on your local machine.
 
 ---
 
-## 🧪 v5.1: Running Automated Tests (Pytest)
+## 🧪 v5.3: Running Automated Tests (Pytest)
 
-This project includes a "safety net" of automated unit tests using `pytest` located in the `test/` directory. These tests verify the integrity of the core components (like the model pipeline).
+This project includes a "Google-level" safety net of automated tests (`test/` directory) using `pytest`. This test suite is organized into three layers of the Test Pyramid:
 
-After installation (Step 4), you can run all tests from the project root directory:
+1.  **v5.1 (Unit Tests):** (`test_pipeline.py`)
+    * Tests core components (like `src/pipeline.py`) in isolation.
+2.  **v5.2 (Integration Tests):** (`test_train_integration.py`)
+    * Tests the entire `src/` training pipeline to validate performance (Accuracy > 0.80).
+3.  **v5.3 (E2E API Tests):** (`test_api_e2e.py`)
+    * Automatically starts the v3.0 Docker container (`titanic-api:v3`), sends live HTTP requests, and validates the JSON response.
+
+### How to Run Tests
+
+After installation and activating the environment:
+
+**1. Run All Tests (Fast & Slow):**
+This will run all 7 tests.
+*(Note: This requires Docker to be running and the `titanic-api:v3` image to be built.)*
 
 ```bash
 python -m pytest
 ```
+*Expected Output: `== 7 passed ==`*
 
-If all tests pass (`3 passed`), the project's core logic is confirmed to be working as expected.
+**2. Run Only Fast Unit Tests:**
+This skips any test marked as `@pytest.mark.slow`.
+
+```bash
+python -m pytest -m "not slow"
+```
+*Expected Output: `== 3 passed, 4 deselected ==`*
+
+---
 
 ## ⚡ How to Use
 
