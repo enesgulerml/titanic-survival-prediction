@@ -10,6 +10,7 @@ dependencies:
   - mlflow
   - fastapi
   - streamlit
+  - pytest
   - requests
   - joblib
   - pip
