@@ -80,6 +80,18 @@ Follow these steps to set up the project environment on your local machine.
 
 ---
 
+## 🧪 v5.1: Running Automated Tests (Pytest)
+
+This project includes a "safety net" of automated unit tests using `pytest` located in the `test/` directory. These tests verify the integrity of the core components (like the model pipeline).
+
+After installation (Step 4), you can run all tests from the project root directory:
+
+```bash
+python -m pytest
+```
+
+If all tests pass (`3 passed`), the project's core logic is confirmed to be working as expected.
+
 ## ⚡ How to Use
 
 Once installed, the project provides two main functions via the command line.
