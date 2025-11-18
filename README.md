@@ -54,7 +54,7 @@ Follow these steps to set up the project environment on your local machine.
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/enesgulerml/titanic-survival-prediction.git](https://github.com/enesgulerml/titanic-survival-prediction.git)
+    git clone https://github.com/enesgulerml/titanic-survival-prediction.git
     cd titanic-survival-prediction
     ```
 
